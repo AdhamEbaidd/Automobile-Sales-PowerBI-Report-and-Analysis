@@ -126,6 +126,21 @@ CALCULATE(
 	ALLSELECTED('Auto Sales data'[CUSTOMERNAME])
 )`    
 
+8. **Average Days Between Orders Per Customer Table**
+   A table created using DAX that displays the average days between orders for every customer for every year.
+
+   `Average Days Between Orders Per Customer = 
+    SUMMARIZE(
+        FILTER(
+            'Auto Sales data',
+            'Auto Sales data'[DaysBetweenOrders] > 0
+        ),
+        'Auto Sales data'[CUSTOMERNAME],
+        'Auto Sales data'[ORDERDATE].[Year],
+        "AvgDays", AVERAGE('Auto Sales data'[DaysBetweenOrders])
+    )`  
+
+
 ## Main Page  
 
 ![Main Page GIF](https://github.com/user-attachments/assets/58e92265-4a6c-4cb0-885e-e1c4c9ee0e92)
